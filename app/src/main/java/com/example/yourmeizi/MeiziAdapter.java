@@ -15,28 +15,32 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.ViewHolder> 
     private List<Meizi> MeiziList;
     private Context context;
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
-        public ViewHolder(View view){
+
+        public ViewHolder(View view) {
             super(view);
             img = view.findViewById(R.id.img_view);
         }
     }
-    public MeiziAdapter(List<Meizi> meiziList){
+
+    public MeiziAdapter(List<Meizi> meiziList) {
         MeiziList = meiziList;
     }
-    public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
+
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.img_item,parent,false);
+                .inflate(R.layout.img_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
-    public void onBindViewHolder(ViewHolder holder,int position){
+
+    public void onBindViewHolder(ViewHolder holder, int position) {
         Meizi meizi = MeiziList.get(position);
-        //holder.img.setImageResource(meizi.getImgId());
         Glide.with(context).load(meizi.getImgId()).into(holder.img);
     }
-    public int getItemCount(){
+
+    public int getItemCount() {
         return MeiziList.size();
     }
 }
